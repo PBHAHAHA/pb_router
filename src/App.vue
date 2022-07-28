@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { env } from "./types/helper";
-console.log(typeof env.DEV);
+import { env } from "./types/helper"
+import * as userApi from "@/api/user"
+const response = await userApi.login()
+console.log(response.data)
 </script>
 
 <template>
