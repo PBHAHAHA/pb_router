@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { env } from "./types/helper";
-console.log(env.VITE_API_URL);
+console.log(typeof env.DEV);
 </script>
 
 <template>
