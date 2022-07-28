@@ -40,6 +40,7 @@ function getRouteByModule(
   module: { [key: string]: any },
   prename?: string
 ) {
+  console.log(module.default)
   const name = file.split("/").pop()?.split(".")[0]
   const route = {
     path: prename ? `/${prename}/${name}` : `/${name}`,

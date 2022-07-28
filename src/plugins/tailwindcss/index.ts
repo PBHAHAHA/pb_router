@@ -1,4 +1,2 @@
 import "./tailwindcss.scss"
-export function setupTailwindcss() {
-
-}
+export function setupTailwindcss() {}
