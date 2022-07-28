@@ -1,5 +1,6 @@
 <script setup lang="ts">
-console.log(import.meta.env.VITE_SOME_KEY)
+import { env } from "./types/helper";
+console.log(env.VITE_API_URL);
 </script>
 
 <template>
@@ -11,6 +12,4 @@ console.log(import.meta.env.VITE_SOME_KEY)
   <router-view />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
