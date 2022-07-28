@@ -17,9 +17,18 @@
     "paths": {
       "@/*": ["./src/*"],
       "#/*": ["./types/*"]
-    },
+    }
   },
-  "include": ["vite.config.ts","src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": [
+    "vite.config.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "vite/**/*.ts",
+    "mock/*.ts",
+    "types/**/*.d.ts"
+  ],
   // "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["node_modules", "dist"]
 }
