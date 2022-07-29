@@ -1,6 +1,6 @@
 import { fileURLToPath } from "url"
 import { RouteRecordRaw } from "vue-router"
-import { env } from "@/utils/helper"
+import { env } from "@/utils"
  
 const layouts = import.meta.glob("../layout/*.vue", { eager: true })
 function getRoutes() {
