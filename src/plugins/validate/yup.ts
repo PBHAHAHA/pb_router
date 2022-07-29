@@ -2,10 +2,10 @@ import * as yup from "yup"
 
 yup.setLocale({
   mixed: {
-    required: "${label}必须输入",
+    required: "必填项不能为空",
   },
   string: {
-    email: "邮箱格式错误",
+    email: "邮箱格式错误，请重新输入",
   },
 })
 
