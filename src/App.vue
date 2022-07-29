@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { env } from "./types/helper"
+import { env } from "./utils/helper"
 import * as userApi from "@/api/user"
 async function a (){
   const response = await userApi.login()

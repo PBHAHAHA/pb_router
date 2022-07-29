@@ -33,5 +33,9 @@ const form = reactive<{account: number | string, password: string}>({
   password: "",
 });
 </script>
-
+<script lang="ts">
+export default {
+    route: {path: '/login'}
+}
+</script>
 <style lang="scss" scoped></style>

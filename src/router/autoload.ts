@@ -1,6 +1,7 @@
 import { fileURLToPath } from "url"
 import { RouteRecordRaw } from "vue-router"
-
+import { env } from "@/utils/helper"
+ 
 const layouts = import.meta.glob("../layout/*.vue", { eager: true })
 function getRoutes() {
   const layoutRoutes = [] as RouteRecordRaw[]
@@ -9,8 +10,6 @@ function getRoutes() {
     route.children = getChildrenRoute(route)
     layoutRoutes.push(route)
   })
-  console.log(layoutRoutes)
-
   return layoutRoutes
 }
 
@@ -52,4 +51,5 @@ function getRouteByModule(
   return Object.assign(route, module.default?.route) 
 }
 
-export default getRoutes()
+const routes = env.VITE_ROUTER_AUTOLOAD ? getRoutes() : [] as RouteRecordRaw[]
+export default routes
