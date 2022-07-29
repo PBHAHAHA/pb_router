@@ -1,18 +1,17 @@
-import { configure, Form, defineRule } from "vee-validate";
+import * as veeValidate from "vee-validate";
 import rules from "@vee-validate/rules";
 import { localize } from "@vee-validate/i18n";
 import zh_CN from "@vee-validate/i18n/dist/locale/zh_CN.json";
+import yup from "./yup"
 
 // 配置中文包
-configure({
+veeValidate.configure({
   generateMessage: localize('zh_CN', zh_CN)
 })
+Object.keys(rules).forEach(key => {
+  veeValidate.defineRule(key, rules[key])
+})
 
-function defineRules(nameArr: ['a' | 'b']) {
-  console.log(rules)
-  Object.keys(rules).forEach((key) => {
-    defineRule(key, rules[key])
-  })
-}
 
-export {defineRules};
+const modules = {yup, ...veeValidate}
+export default modules

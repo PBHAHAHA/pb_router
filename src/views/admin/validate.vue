@@ -1,6 +1,6 @@
 <template>
   <form @submit="onSubmit">
-    <input type="text" v-model="usernameValue" />
+    <input label="用户名" type="text" v-model="usernameValue" />
     <p>{{errors.username}}</p>
     <input type="text" v-model="passwordValue" />
     <p>{{ errors.password }}</p>
@@ -10,18 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import {
-  Form,
-  defineRule,
-  useField,
-  useForm,
-} from "vee-validate";
-import { required, min, max, confirmed, email } from "@vee-validate/rules";
-import * as yup from "yup"
+import v from "@/plugins/validate"
 import { ref } from "vue";
 // defineRule("email", email);
 // defineRule("required", required);
-
+const {useForm,yup,useField} = v
 // 要注意书写顺序
 const { handleSubmit, errors } = useForm({
   initialValues: {
@@ -29,8 +22,8 @@ const { handleSubmit, errors } = useForm({
     password: "",
   },
   validationSchema: {
-    username: yup.string().required('用户名不能为空').email('邮箱格式不正确'),
-    password: yup.string().required('密码不能为空').min(6,"最少"),
+    username: yup.string().required().email(),
+    password: yup.string().required().min(6,"最少6位"),
   },
 });
 const { value: usernameValue } = useField(

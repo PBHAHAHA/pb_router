@@ -17,24 +17,11 @@
 </template>
 
 <script setup lang="ts">
-import { Form, Field, ErrorMessage, defineRule, configure } from "vee-validate";
-import { required, min, max, confirmed, email } from "@vee-validate/rules";
 import { ref } from "vue";
-import { localize } from "@vee-validate/i18n";
-import zh_CN from "@vee-validate/i18n/dist/locale/zh_CN.json";
-import { defineRules } from "@/plugins/validate/index";
+import v from "@/plugins/validate/index";
+const {Form,Field} = v
 const account = ref("");
 
-defineRules()
-// defineRule("email", email);
-// defineRule("required", required);
-// configure({
-//   generateMessage: localize('zh_CN', zh_CN)
-// })
-const emailRule = (value: string) => {
-  console.log(/@/.test(value));
-  return /@/.test(value) ? true : "邮箱格式错误";
-};
 function onSubmit(val: any) {
   console.log(val);
 }
