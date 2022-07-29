@@ -5,7 +5,7 @@ const layouts = import.meta.glob("../layout/*.vue", { eager: true })
 function getRoutes() {
   const layoutRoutes = [] as RouteRecordRaw[]
   Object.entries(layouts).forEach(([file, module]) => {
-    const route = getRouteByModule(file, module)
+    const route = getRouteByModule(file, (module as any))
     route.children = getChildrenRoute(route)
     layoutRoutes.push(route)
   })
@@ -21,7 +21,7 @@ function getChildrenRoute(layoutRoute: RouteRecordRaw) {
   const childrenRoutes = [] as RouteRecordRaw[]
   Object.entries(views).forEach(([file, module]) => {
     if (file.includes(`../views/${layoutRoute.name as string}`)) {
-      const route = getRouteByModule(file, module, layoutRoute.name)
+      const route = getRouteByModule(file, (module as any), String(layoutRoute.name))
       childrenRoutes.push(route)
     }
   })
