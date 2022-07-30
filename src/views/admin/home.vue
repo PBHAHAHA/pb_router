@@ -1,71 +1,60 @@
 <template>
-  <div class="admin-wrapper h-screen w-screen flex">
-    <div class="menu w-[200px] bg-gray-800 p-4">
-      <div class="logo text-white text-center">
-        <i class="text-orange-500 fas fa-robot text-2xl mr-3"></i>
-        <span class="text-lg">项目管理器</span>
-      </div>
-      <div class="left-container">
-        <Menu></Menu>
-      </div>
-    </div>
-    <div class="content flex-1 bg-gray-200">
-      <nav-bar></nav-bar>
-      <router-view></router-view>
-    </div>
+  <div class="grid grid-flow-col gap-3">
+    <el-card
+      shadow="hover"
+      :body-style="{ padding: '20px' }"
+      v-for="item in cards"
+    >
+      <template #header>
+        <div class="flex justify-between items-center">
+          <span>{{ item.title }}</span>
+          <el-tag type="danger" size="mini" effect="dark">月</el-tag>
+        </div>
+      </template>
+      <section class="flex justify-between items-center">
+        <span class="text-2xl font-semibold"> {{ item.num }} </span
+        ><i :class="[item.icon]" class="text-5xl"></i>
+      </section>
+    </el-card>
   </div>
 </template>
 
 <script setup lang="ts">
-import Menu from "@/layout/admin/menu.vue"
-import NavBar from "@/layout/admin/navbar.vue"
 import { ref } from "vue"
 
-interface IMenuItem {
+interface ICardItem {
   title: string
-  icon?: string
-  active?: boolean
+  icon: string
+  num: number
+  date?: "年" | "月" | "周"
 }
-interface IMenu extends IMenuItem {
-  children?: IMenuItem[]
-}
-const menus = ref<IMenu[]>([
+const cards = ref<ICardItem[]>([
   {
-    title: "错误页面",
-    icon: "fab fa-delicious",
-    active: true,
-    children: [{ title: "404", active: true }, { title: "403" }],
+    title: "Vue",
+    icon: "fab fa-vuejs text-[#4fc08d]",
+    num: 10,
   },
   {
-    title: "编辑器",
-    icon: "fas fa-keyboard",
-    children: [{ title: "markdown编辑器" }, { title: "富文本编辑器" }],
+    title: "React",
+    icon: "fab fa-react text-[#61dafb]",
+    num: 2,
+  },
+  {
+    title: "Node.js",
+    icon: "fab fa-node-js text-[#43853d]",
+    num: 4,
+  },
+  {
+    title: "CSS",
+    icon: "fab fa-css3-alt text-[#bd2d30]",
+    num: 13,
+  },
+  {
+    title: "HTML5",
+    icon: "fab fa-css3-alt text-[#bd2d30]",
+    num: 13,
   },
 ])
-
-function resetMenus() {
-  menus.value.forEach((menu) => {
-    menu.active = false
-    menu.children?.forEach((sub) => {
-      sub.active = false
-    })
-  })
-}
-
-function menuHandle(menu: IMenuItem, sub?: IMenuItem) {
-  resetMenus()
-  menu.active = true
-  if (sub) {
-    console.log(sub)
-    sub.active = true
-    console.log(sub)
-  }
-}
 </script>
 
-<style lang="scss" scoped>
-.admin-wrapper {
-  .left-container {
-  }
-}
-</style>
+<style scoped></style>

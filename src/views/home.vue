@@ -6,7 +6,7 @@
       src="/images/avatar.jpg"
       class="-mt-72 w-56 h-56 object-cover rounded-full border-8 border-white mb-5"
     />
-    <router-link class="pb-button" :to="{ name: 'admin-home' }"
+    <router-link class="pb-button" :to="{ name: 'admin' }"
       >后台管理</router-link
     >
   </div>
