@@ -1,24 +1,29 @@
 <template>
-  <div class="admin-wrapper h-screen w-screen flex">
-    <div class="menu w-[200px] bg-gray-800 p-4">
-      <div class="logo text-white text-center">
-        <i class="text-orange-500 fas fa-robot text-2xl mr-3"></i>
-        <span class="text-lg">项目管理器</span>
-      </div>
-      <div class="left-container">
-        <Menu></Menu>
-      </div>
-    </div>
-    <div class="content flex-1 bg-gray-200">
-      <nav-bar></nav-bar>
-      <router-view></router-view>
-    </div>
+  <div>
+    <dl v-for="menu in menus" :key="menu.title" @click="menuHandle(menu)">
+      <dt>
+        <section>
+          <i :class="[menu.icon, 'mr-2']"></i>
+          <span class="">{{ menu.title }}</span>
+        </section>
+        <section>
+          <i class="fas fa-angle-down"></i>
+        </section>
+      </dt>
+      <dd
+        v-show="menu.active"
+        v-for="subMenu in menu.children"
+        @click="menuHandle(menu, subMenu)"
+        :class="{ active: subMenu.active }"
+      >
+        {{ subMenu.active }}
+        {{ subMenu.title }}
+      </dd>
+    </dl>
   </div>
 </template>
 
 <script setup lang="ts">
-import Menu from "@/layout/admin/menu.vue"
-import NavBar from "@/layout/admin/navbar.vue"
 import { ref } from "vue"
 
 interface IMenuItem {
@@ -55,17 +60,20 @@ function resetMenus() {
 function menuHandle(menu: IMenuItem, sub?: IMenuItem) {
   resetMenus()
   menu.active = true
-  if (sub) {
-    console.log(sub)
-    sub.active = true
-    console.log(sub)
-  }
 }
 </script>
 
 <style lang="scss" scoped>
-.admin-wrapper {
-  .left-container {
+dl {
+  @apply text-white;
+  dt {
+    @apply py-3 mt-6 flex justify-between cursor-pointer items-center;
+  }
+  dd {
+    @apply text-sm py-3 pl-4 my-2 text-white rounded-sm cursor-pointer hover:bg-orange-400;
+    &.active {
+      @apply bg-orange-500 hover:bg-orange-400;
+    }
   }
 }
 </style>
