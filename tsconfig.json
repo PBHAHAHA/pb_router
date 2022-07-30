@@ -27,7 +27,8 @@
     "src/**/*.vue",
     "vite/**/*.ts",
     "mock/*.ts",
-    "types/**/*.d.ts"
+    "types/**/*.d.ts",
+    "types/**/*.ts"
   ],
   // "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["node_modules", "dist"]

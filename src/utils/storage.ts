@@ -2,7 +2,7 @@
  * expire: 过期时间
  * data: 存储的数据
  */
-interface IData {
+export interface IData {
   expire: number
   [key: string]: any
 }

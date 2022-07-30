@@ -55,6 +55,8 @@ import { reactive } from "vue"
 import v from "@/plugins/validate/index"
 import * as userApi from "@/api/user"
 import {storage} from "@/utils"
+import { useRouter } from "vue-router";
+const router = useRouter()
 
 const { useField, useForm, yup } = v
 
@@ -85,9 +87,9 @@ const { value: password } = useField(
 
 const onSubmit = handleSubmit(async (val) => {
   const {data,success} = await userApi.login(val)
-  if(success) console.log("登录成功");
+  if(success) router.replace("/")
   storage.set('token',{
-    expire: 24*60*60,
+    expire: 24*60*60*1000,
     data: data.token
   })
 })

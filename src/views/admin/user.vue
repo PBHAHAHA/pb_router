@@ -8,6 +8,8 @@
 
 <script>
 export default {
-    // route: {path: '/user'}
+    route: {meta: {
+      notAuth: true
+    }}
 }
 </script>

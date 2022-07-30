@@ -3,7 +3,7 @@ import { RouteRecordRaw } from "vue-router"
 const routes = [
   {
     path: "/",
-    name: 'Home',
+    name: 'home',
     component: () => import("@/views/home.vue"),
     children: [
       {
