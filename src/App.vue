@@ -1,8 +1,13 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <router-view />
 </template>
 
-<style scoped></style>
+<style lang="scss">
+html,
+body,
+#app {
+  height: 100% !important;
+}
+</style>

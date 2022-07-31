@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-flow-col gap-3">
+  <div class="p-5 grid md:grid-flow-col gap-3 bg-white">
     <el-card
       shadow="hover"
       :body-style="{ padding: '20px' }"
@@ -8,7 +8,7 @@
       <template #header>
         <div class="flex justify-between items-center">
           <span>{{ item.title }}</span>
-          <el-tag type="danger" size="mini" effect="dark">月</el-tag>
+          <el-tag type="danger" size="small" effect="dark">月</el-tag>
         </div>
       </template>
       <section class="flex justify-between items-center">
@@ -17,10 +17,15 @@
       </section>
     </el-card>
   </div>
+  <div class="mt-2 bg-white p-5 grid md:grid-flow-col gap-3 overflow-hidden">
+    <div id="main" style=" height: 500px" class="w-full"></div>
+    <div id="main2" style="height: 500px" class="w-full"></div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
+import { nextTick, ref } from "vue"
+import { echart1, echart2 } from "./echart"
 
 interface ICardItem {
   title: string
@@ -55,6 +60,13 @@ const cards = ref<ICardItem[]>([
     num: 13,
   },
 ])
+
+nextTick(() => {
+  var myChart1 = echarts.init(document.getElementById("main"))
+  myChart1.setOption(echart1)
+  var myChart2 = echarts.init(document.getElementById("main2"))
+  myChart2.setOption(echart2)
+})
 </script>
 
 <style scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class=" h-screen w-screen bg-gray-200 flex flex-col justify-center items-center"
+    class=" h-full w-screen bg-gray-200 flex flex-col justify-center items-center"
   >
     <img
       src="/images/avatar.jpg"

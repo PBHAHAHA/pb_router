@@ -7,16 +7,16 @@
           <span class="">{{ menu.title }}</span>
         </section>
         <section>
-          <i class="fas fa-angle-down"></i>
+          <i class="fas fa-angle-down " :class="{'rotate-180': menu.active}"></i>
         </section>
       </dt>
       <dd
+        class="bg-gray-700"
         v-show="menu.active"
         v-for="subMenu in menu.children"
         @click="menuHandle(menu, subMenu)"
         :class="{ active: subMenu.active }"
       >
-        {{ subMenu.active }}
         {{ subMenu.title }}
       </dd>
     </dl>
@@ -25,7 +25,9 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
+import { useRouter } from "vue-router";
 
+const router = useRouter()
 interface IMenuItem {
   title: string
   icon?: string
@@ -60,6 +62,7 @@ function resetMenus() {
 function menuHandle(menu: IMenuItem, sub?: IMenuItem) {
   resetMenus()
   menu.active = true
+  router.push("/admin/home")
 }
 </script>
 

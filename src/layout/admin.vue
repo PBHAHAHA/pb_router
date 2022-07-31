@@ -1,18 +1,18 @@
 <template>
-  <div class="admin-wrapper h-screen w-screen flex">
-    <div class="menu w-[200px] bg-gray-800 p-4">
+  <div class="admin-wrapper h-full w-screen flex">
+    <div class=" hidden md:block menu w-[200px] bg-gray-800 p-4">
       <div class="logo text-white text-center">
         <i class="text-orange-500 fas fa-robot text-2xl mr-3"></i>
         <span class="text-lg">项目管理器</span>
       </div>
-      <div class="left-container">
+      <div class="left-container ">
         <Menu></Menu>
       </div>
     </div>
     <div class="content flex-1 bg-gray-200">
       <nav-bar></nav-bar>
-      <history-link></history-link>
-      <div class="m-3 p-5 bg-white">
+      <history-link class="hidden md:block"></history-link>
+      <div class="m-3 bg-gray-200">
         <router-view></router-view>
       </div>
     </div>
