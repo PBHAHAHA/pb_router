@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5 grid md:grid-flow-col gap-3 bg-white">
+  <div class="p-5 grid md:grid-cols-4 gap-3 bg-white">
     <el-card
       shadow="hover"
       :body-style="{ padding: '20px' }"
@@ -17,9 +17,19 @@
       </section>
     </el-card>
   </div>
-  <div class="mt-2 bg-white p-5 grid md:grid-flow-col gap-3 overflow-hidden">
-    <div id="main" style=" height: 500px" class="w-full"></div>
-    <div id="main2" style="height: 500px" class="w-full"></div>
+  <div class="mt-2 bg-white p-5 grid md:grid-cols-2 gap-3 overflow-hidden">
+    <el-card shadow="hover" :body-style="{ padding: '20px' }">
+      <template #header>
+        <div>用户统计</div>
+      </template>
+      <div id="main" class="h-72 w-full"></div>
+    </el-card>
+    <el-card shadow="hover" :body-style="{ padding: '20px' }">
+      <template #header>
+        <div>文章统计</div>
+      </template>
+      <div id="main2" class="h-72 w-full"></div>
+    </el-card>
   </div>
 </template>
 

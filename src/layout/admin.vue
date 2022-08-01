@@ -1,6 +1,6 @@
 <template>
-  <div class="admin-wrapper h-full w-screen flex">
-    <div class=" hidden md:block menu w-[200px] bg-gray-800 p-4">
+  <div class="h-full min-h-full admin-wrapper w-screen flex">
+    <div class="h-full hidden md:block menu w-[200px] bg-gray-800 p-4">
       <div class="logo text-white text-center">
         <i class="text-orange-500 fas fa-robot text-2xl mr-3"></i>
         <span class="text-lg">项目管理器</span>
