@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5 grid md:grid-cols-4 gap-3 bg-white">
+  <div class="bg-white p-5 grid md:grid-cols-4 gap-3">
     <el-card
       shadow="hover"
       :body-style="{ padding: '20px' }"

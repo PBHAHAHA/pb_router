@@ -1,8 +1,12 @@
+/**
+ * 此文件 是根据视图文件夹 自动注册路由
+ */
+
 import { fileURLToPath } from "url"
 import { RouteRecordRaw } from "vue-router"
 import { env } from "@/utils"
  
-const layouts = import.meta.glob("../layout/*.vue", { eager: true })
+const layouts = import.meta.glob("../../layout/*.vue", { eager: true })
 function getRoutes() {
   const layoutRoutes = [] as RouteRecordRaw[]
   Object.entries(layouts).forEach(([file, module]) => {
@@ -14,7 +18,7 @@ function getRoutes() {
 }
 
 // 获取子路由
-const views = import.meta.glob("../views/**/*.vue", { eager: true })
+const views = import.meta.glob("../../views/**/*.vue", { eager: true })
 function getChildrenRoute(layoutRoute: RouteRecordRaw) {
   // console.log(layoutRoute)
   const childrenRoutes = [] as RouteRecordRaw[]
@@ -51,5 +55,4 @@ function getRouteByModule(
   return Object.assign(route, module.default?.route) 
 }
 
-const routes = env.VITE_ROUTER_AUTOLOAD ? getRoutes() : [] as RouteRecordRaw[]
-export default routes
+export default getRoutes
